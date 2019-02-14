@@ -27,6 +27,7 @@ var result = dirtree2json.dirTojson(path [,options]);
 |attributeName.modificationTime | string | "modificationTime" | overwrites the name of the 'modification time' attribute|
 |attributeName.path | string | "path" | overwrites the name of the 'path' attribute|
 |attributeName.size | string | "size" | overwrites the name of the 'size' attribute|
+|attributeName.state | string | "state" | overwrites the name of the 'state' attribute|
 |excludeEmptyFolders | boolean | false | exclude all folders without a file. This is also excludes folders with just empty folders|
 |filter.fileExtension | regex or string | null | filter files by file extension name|
 |filter.fileName | regex or string | null | filter files by name|
@@ -40,6 +41,7 @@ var result = dirtree2json.dirTojson(path [,options]);
 |includeSize | boolean | false | include the size of the folder/file|
 |rootName | string | name of the relative path | overwrites the name of the root folder|
 |rootPath | string | relative path of the folder | overwrites the path attribute of the  the root|
+|state | string | state of node | custom states can be kept in here i.e. expanded: true |
 
 ## Examples
 All examples use this folder structure
