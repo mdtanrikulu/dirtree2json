@@ -67,11 +67,21 @@ describe('path', function() {
 describe('options', function () {
     describe('default options', function () {
         it('should be equal to the json', function () {
-            assert.deepStrictEqual(dirtree.dirTojson(__dirname + '/testDir'), { "ext": "", "isDir": true, "path": "testDir", "name": "testDir", "child": [{ "ext": "", "path": "testDir/dir1", "name": "dir1", "isDir": true, "child": [{ "ext": "css", "path": "testDir/dir1/css1.css", "name": "css1.css", "isDir": false }, { "ext": "txt", "path": "testDir/dir1/file1.txt", "name": "file1.txt", "isDir": false }, { "ext": "txt", "path": "testDir/dir1/file2.txt", "name": "file2.txt", "isDir": false }, { "ext": "html", "path": "testDir/dir1/index.html", "name": "index.html", "isDir": false }, { "ext": "js", "path": "testDir/dir1/js1.js", "name": "js1.js", "isDir": false }] }, { "ext": "", "path": "testDir/dir2", "name": "dir2", "isDir": true, "child": [{ "ext": "txt", "path": "testDir/dir2/file1.txt", "name": "file1.txt", "isDir": false }, { "ext": "txt", "path": "testDir/dir2/file2.txt", "name": "file2.txt", "isDir": false }] }, { "ext": "", "path": "testDir/dir3", "name": "dir3", "isDir": true, "child": [] }, { "ext": "txt", "path": "testDir/file1.txt", "name": "file1.txt", "isDir": false }] });
+            console.log(JSON.stringify(dirtree.dirTojson(__dirname + '/testDir')))
+            assert.deepStrictEqual(dirtree.dirTojson(__dirname + '/testDir'), {"ext":"","isDir":true,"path":"testDir","name":"testDir","child":[{"ext":"","path":"testDir/dir1","name":"dir1","isDir":true,"child":[{"ext":"css","path":"testDir/dir1/css1.css","name":"css1.css","isDir":false,"child":[]},{"ext":"txt","path":"testDir/dir1/file1.txt","name":"file1.txt","isDir":false,"child":[]},{"ext":"txt","path":"testDir/dir1/file2.txt","name":"file2.txt","isDir":false,"child":[]},{"ext":"html","path":"testDir/dir1/index.html","name":"index.html","isDir":false,"child":[]},{"ext":"js","path":"testDir/dir1/js1.js","name":"js1.js","isDir":false,"child":[]}]},{"ext":"","path":"testDir/dir2","name":"dir2","isDir":true,"child":[{"ext":"txt","path":"testDir/dir2/file1.txt","name":"file1.txt","isDir":false,"child":[]},{"ext":"txt","path":"testDir/dir2/file2.txt","name":"file2.txt","isDir":false,"child":[]}]},{"ext":"txt","path":"testDir/file1.txt","name":"file1.txt","isDir":false,"child":[]}]});
         });
     });
 
     describe('include/exclude options', function () {
+        describe('includeId', function () {
+            it('should include', function () {
+                assert.ok(!!dirtree.dirTojson(__dirname + '/testDir', { includeId: "true" }).id);
+            });
+            it('should exclude', function () {
+                assert.ok(!dirtree.dirTojson(__dirname + '/testDir', { includeId: false }).id);
+            });
+        });
+
         describe('includeAbsolutePath', function () {
             it('should include', function () {
                 assert.ok(!!dirtree.dirTojson(__dirname + '/testDir', { includeAbsolutePath: "true" }).absolutePath);

@@ -17,6 +17,7 @@ var result = dirtree2json.dirTojson(path [,options]);
 
 | Option | Type | Default | Description |
 |------|:----:|:-------:|-----------|
+|attributeName.id | string | "id" | overwrites the name of the 'id' attribute|
 |attributeName.absolutePath | string | "absolutePath" | overwrites the name of the 'absolute path' attribute|
 |attributeName.child | string | "child" | overwrites the name of the 'children' attribute|
 |attributeName.creationTime | string | "creationTime" | overwrites the name of the 'creation time' attribute|
@@ -30,6 +31,7 @@ var result = dirtree2json.dirTojson(path [,options]);
 |filter.fileExtension | regex or string | null | filter files by file extension name|
 |filter.fileName | regex or string | null | filter files by name|
 |filter.folderName | regex or string | null | filter folders by name|
+|includeId | boolean | false | generate uuid for every node |
 |includeAbsolutePath | boolean | false | include the absolute path of the folder/file |
 |includeCreationTime | boolean | false | include the creation time of the folder/file|
 |includeDirFlag | boolean | true | include is directory flag|
